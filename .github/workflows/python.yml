@@ -25,11 +25,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest ruff
-      
-      # RUN Pytest
-      - name: Run Unit Test
-        run: pytest
+          pip install -r requirements.txt
 
       # RUN Ruff
       - name: Run Ruff (Lint)
@@ -38,3 +34,7 @@ jobs:
       # RUN RUff format check
       - name: Run Ruff Format Check
         run: ruff format --check .
+      
+      # RUN Pytest
+      - name: Run Unit Test
+      run: pytest
