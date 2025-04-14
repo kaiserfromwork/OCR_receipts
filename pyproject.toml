@@ -1,0 +1,10 @@
+[tool.ruff]
+line-length = 88    # max line length set to 88
+target-version = "py39" # minimum python version set to 3.9
+select = ["E", "F", "B"]    # Linting: Errors, Flake8, Bugbear
+
+
+[tool.pytest.ini_options]
+minversion = "7.4.4"    # minimum pytest version
+addopts = "-ra -q"  # Show extra summary for test fails. Reduces output verbosity from pytest
+testpaths = ["test"] # path to test file

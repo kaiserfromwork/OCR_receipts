@@ -1,0 +1,40 @@
+name: Python CI
+
+on:
+  push:
+    branches: [main, "**"]
+  
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on:  ubuntu-latest # Run GitHub hosted Ubuntu Linux (clean environment with Python pre-installed)
+
+    steps:
+      # SETUP Github
+      - uses: actions/checkout@v4
+
+      # SETUP Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      # INSTALL Dependencies
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest ruff
+      
+      # RUN Pytest
+      - name: Run Unit Test
+        run: pytest
+
+      # RUN Ruff
+      - name: Run Ruff (Lint)
+        run: ruff .
+
+      # RUN RUff format check
+      - name: Run Ruff Format Check
+        run: ruff format --check .
