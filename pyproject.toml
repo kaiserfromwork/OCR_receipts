@@ -1,6 +1,8 @@
 [tool.ruff]
 line-length = 88    # max line length set to 88
 target-version = "py39" # minimum python version set to 3.9
+
+[tool.ruff.lint]
 select = ["E", "F", "B"]    # Linting: Errors, Flake8, Bugbear
 
 
